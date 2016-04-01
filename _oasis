@@ -1,0 +1,27 @@
+OASISFormat:  0.4
+Name:         necas
+Version:      0.0
+Synopsis:     experimental cas
+Authors:      Andrei Formiga
+License:      MIT
+Plugins:      DevFiles (0.4), META (0.4)
+BuildTools:   ocamlbuild
+
+Library Necas
+  Path:           src
+  Modules:        Necas
+  BuildDepends:   num
+  CompiledObject: best
+
+Executable test
+  Path:           test
+  MainIs:         test.ml
+  Install:        false
+  Build$:         flag(tests)
+  BuildDepends:   oUnit (>= 2.0.0), Necas
+  CompiledObject: best
+  ByteOpt:        
+  NativeOpt:      -inline 20
+
+Test main
+  Command:        $test
